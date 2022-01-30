@@ -6,9 +6,17 @@ workflows:
   test-deploy:
     jobs:
       - test
+      - runtests
 
 jobs:
   test:
+    docker:
+      - image: cimg/node:17.4.0
+    steps:
+      - checkout
+      - run: node --version
+  
+  runtests:
     docker:
       - image: cimg/node:17.4.0
     steps:
